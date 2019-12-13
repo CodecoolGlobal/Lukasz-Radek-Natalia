@@ -14,7 +14,7 @@ from test import check_forbidden_functions, get_subscribed_list, compare_lists
 
 
 class CRMTester(unittest.TestCase):
-    data_file = "../model/crm/customers_test.csv"
+    data_file = "../model/crm/customers.csv"
 
     def test_forbidden_functions(self):
         check_forbidden_functions(self, "../model/crm/crm.py")
@@ -48,7 +48,7 @@ class CRMTester(unittest.TestCase):
         expected_updated_record = ["kH38Jm#&", 'x' ,'x', 'x', 'x']
         updated_data_row = ['x' , 'x', 'x', 'x']
         crm.update(table, "kH38Jm#&", updated_data_row)
-        self.assertListEqual(table[0], expected_updated_record)
+        self.assertListEqual(table[1], expected_updated_record)
 
     def test_remove_record(self):
         table = data_manager.get_table_from_file(self.data_file)
