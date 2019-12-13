@@ -4,8 +4,8 @@
 import random
 from model import data_manager
 
-def generate_random(table):
-    """
+
+"""
     Generates random and unique string. Used for id/key generation:
          - at least 2 special characters (except: ';'), 2 number, 2 lower and 2 upper case letter
          - it must be unique in the table (first value in every row is the id)
@@ -15,17 +15,28 @@ def generate_random(table):
 
     Returns:
         string: Random and unique string
-    """
+"""
+def generate_random(table):
+    all_characters = [['1', '2', '3', '4', '5', '6', '7', '8', '9', '0'], 
+    ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N',
+     'O', 'P', 'R', 'S', 'T', 'U', 'W', 'X', 'Y', 'Z'], 
+    ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h',  'i', 'j', 'k', 'l', 'm', 'n',
+     'o', 'p', 'r', 's', 't', 'u', 'w', 'x', 'y', 'z'], 
+    ['`', '~', '!', '@', '#', '$', '%', '^', '&', '*', '(' ,')' ,'_', '-',
+     '+', '=', '{' , '}' , '}', '|', ':', ',', '"', '<', '>','.','?','/']]
+    generated_list = []
+    for a in range(len(all_characters)):
+        for i in range(2):
+            generated_list.append(random.choice(all_characters[0+a]))
+    generated = ''.join(generated_list)
+    if generated_list in table:
+        generate_random(table)
+    else:
+        pass
+    return generated
 
-    generated = ''
 
-    pass
-
-
-
-
-def create(table, record):
-    """
+"""
     Adds new record to table
 
     Args:
@@ -35,13 +46,12 @@ def create(table, record):
     Returns:
         list: Table with a new record
     """
-    pass
+def create(table, record):
+    table.append(record)
+    return table
 
 
-
-
-def read(table, id_):
-    """
+"""
     Get the record from the table by id
 
     Args:
@@ -51,13 +61,17 @@ def read(table, id_):
     Returns:
         list: record
     """
-    pass
+def read(table, idl):
+    for line in table:
+        if idl in line:
+            record = line
+        else:
+            pass
+    return record
 
 
 
-
-def update(table, id_, record):
-    """
+"""
     Updates specified record in the table.
 
     Args:
@@ -68,14 +82,17 @@ def update(table, id_, record):
     Returns:
         list: table with updated record
     """
+def update(table, id_, record):
+    for line in table:
+        if id_ in line:
+            line[1:] = record
+        else:
+            pass
+    return record
 
-    pass
 
 
-
-
-def delete(table, id_):
-    """
+"""
     Removes a record with a given id from the table.
 
     Args:
@@ -84,10 +101,14 @@ def delete(table, id_):
 
     Returns:
         list: Table without specified record.
-    """
-
-    pass
-
+"""
+def delete(table, id_):
+    for line in table:
+        if id_ in line:
+            table.remove(line)
+        else:
+            pass
+    return table
 
 
 
