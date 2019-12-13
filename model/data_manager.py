@@ -13,10 +13,15 @@
 def get_table_from_file(file_name):
     with open(file_name, 'r') as file:
         result = []
+        result1 = []
         for line in file:
-            columns = line.split(',')
+            columns = line.split('\n')
             result.append(columns)
-    return result
+            for line in columns:
+                columns_1 = line.split(', ')
+                result1.append(columns_1)
+                break
+    return result1
 
 
 """
@@ -37,5 +42,6 @@ def write_table_to_file(file_name, table):
             file.write(','.join([str(x) for x in line]))           
     return
 
-#get_table_from_file('games.csv')
+#a = get_table_from_file('games.csv')
+#print(a)
 #write_table_to_file('games2.csv', get_table_from_file('games.csv'))
