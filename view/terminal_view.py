@@ -1,8 +1,6 @@
 """ Terminal view module """
 
-
-def print_table(table, title_list):
-    """
+ """
     Prints table with data.
 
     Example:
@@ -21,8 +19,14 @@ def print_table(table, title_list):
     Returns:
         None: This function doesn't return anything it only prints to console.
     """
+def print_table(table, title_list):
 
-    #pass
+  def print_table(table, title_list):
+    print('-'* 124)
+    for line in table:
+        print('|', line[0].ljust(8," "), '|', line[1].ljust(40," "), '|',
+         line[2].ljust(38," "), '|', line[3].ljust(10," "), '|', line[4].ljust(12," "), '|' )
+        print('-'* 124)
 
 
 def print_result(result, label):
