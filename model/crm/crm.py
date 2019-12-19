@@ -23,7 +23,7 @@ def generate_random(table):
     ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h',  'i', 'j', 'k', 'l', 'm', 'n',
      'o', 'p', 'r', 's', 't', 'u', 'w', 'x', 'y', 'z'], 
     ['`', '~', '!', '@', '#', '$', '%', '^', '&', '*', '(' ,')' ,'_', '-',
-     '+', '=', '{' , '}' , '}', '|', ':', ',', '"', '<', '>','.','?','/']]
+     '+', '=', '{' , '}' , '}', '|', ':', '"', '<', '>','.','?','/']]
     generated_list = []
     for a in range(len(all_characters)):
         for i in range(2):
@@ -46,8 +46,9 @@ def generate_random(table):
     Returns:
         list: Table with a new record
     """
-def create(table, record):
+def create(table, record, file_name):
     table.append(record)
+    data_manager.write_table_to_file(file_name, table)
     return table
 
 
@@ -82,12 +83,15 @@ def read(table, idl):
     Returns:
         list: table with updated record
     """
-def update(table, id_, record):
+def update(table, id_, record, file_name):
+    id_s = ''.join(id_)
     for line in table:
-        if id_ in line:
-            line[1:] = record
-        else:
+        if id_s in line:
+            line[1:] = record 
+            print('Update OK')          
+        else:            
             pass
+    data_manager.write_table_to_file(file_name, table)
     return record
 
 
@@ -102,14 +106,16 @@ def update(table, id_, record):
     Returns:
         list: Table without specified record.
 """
-def delete(table, id_):
+def delete(table, id_, file_name):
     for line in table:
-        if id_ in line:
+        id_s = ''.join(id_)
+        if id_s in line:
             table.remove(line)
+            print('Remove OK')
         else:
             pass
+    data_manager.write_table_to_file(file_name, table)
     return table
-
 
 
 # special functions:
@@ -126,7 +132,7 @@ def get_longest_name_id(table):
             string: id of the longest name (if there are more than one, return
                 the last by alphabetical order of the names)
         """
-
+  
     pass
 
 

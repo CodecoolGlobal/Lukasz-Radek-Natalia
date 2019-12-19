@@ -1,7 +1,10 @@
 """ Terminal view module """
+from model.crm import crm
+from model import data_manager
 
 
 def print_table(table, title_list):
+    print(title_list)
     print('-'* 124)
     for line in table:
         print('|', line[0].ljust(8," "), '|', line[1].ljust(40," "), '|',
@@ -14,24 +17,31 @@ def print_result(result, label):
   
 
 def print_menu(title, list_options, exit_message):
-  print(title)
-  i = 0
-  for line in list_options:
-    i = i+1
-    print(i, line)
+    print(title)
+    i = 0
+    for line in list_options:
+        i = i+1
+        print(i, line)
+    print('0', exit_message)
 
 
-def get_inputs(list_labels, title):
+def get_inputs(list_labels, title, file_list):
     print(title)
     answers = []
     for line in list_labels:
-        answers.append(input(line))
+        if 'id' in line:
+            a = (crm.generate_random(data_manager.get_table_from_file(file_list)))
+            print('id:', a)
+            answers.append(a)
+        else:
+            a = input(line)
+            answers.append(a)
     return answers
 
 
-def get_choice(options):
-    print_menu("Main menu",options, "Exit program")
-    inputs = get_inputs(["Please enter a number: "], "")
+def get_choice(menu_name, options):
+    print_menu(menu_name,options, "Back/Exit program")
+    inputs = get_inputs(["Please enter a number: "], "", "")
     return inputs[0]
 
 

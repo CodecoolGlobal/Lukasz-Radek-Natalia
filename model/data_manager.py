@@ -39,7 +39,7 @@ def get_table_from_file(file_name):
 def write_table_to_file(file_name, table):
     with open(file_name, 'w') as file:
         for line in table:
-            file.write(','.join([str(x) for x in line]))           
+            file.writelines(', '.join([str(x) for x in line])+'\n')       
     return
 
 #a = get_table_from_file('games.csv')

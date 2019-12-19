@@ -46,10 +46,10 @@ def generate_random(table):
     Returns:
         list: Table with a new record
 """
-def create(table, record):
+def create(table, record, file_name):
     table.append(record)
+    data_manager.write_table_to_file(file_name, table)
     return table
-
 
 """
     Get the record from the table by id
@@ -82,12 +82,15 @@ def read(table, id_):
     Returns:
         list: table with updated record
 """
-def update(table, id_, record):
+def update(table, id_, record, file_name):
+    id_s = ''.join(id_)
     for line in table:
-        if id_ in line:
-            line[1:] = record
-        else:
+        if id_s in line:
+            line[1:] = record 
+            print('Update OK')          
+        else:            
             pass
+    data_manager.write_table_to_file(file_name, table)
     return record
 
 
@@ -102,12 +105,15 @@ def update(table, id_, record):
     Returns:
         list: Table without specified record.
 """
-def delete(table, id_):
+def delete(table, id_, file_name):
     for line in table:
-        if id_ in line:
+        id_s = ''.join(id_)
+        if id_s in line:
             table.remove(line)
+            print('Remove OK')
         else:
             pass
+    data_manager.write_table_to_file(file_name, table)
     return table
 
 
