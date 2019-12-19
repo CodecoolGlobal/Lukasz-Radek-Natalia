@@ -11,10 +11,15 @@ def print_table(table, title_list):
             print('|', line[0].ljust(8," "), '|', line[1].ljust(40," "), '|',
             line[2].ljust(38," "), '|', line[3].ljust(10," "), '|', line[4].ljust(12," "), '|' )
             print('-'* 124)
-    else:
+    elif len(table) == 5:
         print('|', table[0].ljust(8," "), '|', table[1].ljust(40," "), '|',
         table[2].ljust(38," "), '|', table[3].ljust(10," "), '|', table[4].ljust(12," "), '|' )
         print('-'* 124)
+    elif len(table) == 1:
+        print('|', table[0].ljust(8," "), '|')
+        print('-'* 124)
+    elif len(table) == 0:
+        pass
 
 
 def print_result(result, label):

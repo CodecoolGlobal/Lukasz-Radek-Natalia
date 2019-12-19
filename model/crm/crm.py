@@ -155,11 +155,37 @@ def get_subscribed_emails(table):
 
 
 def get_youngest_customer(table):
-    pass
+    n = len(table)
+    iterations = 1
+    while iterations < n:
+        j = 1
+        while j <= n-2:
+            if table[j][3] > table[j+1][3]:
+                temp = table[j+1][3]
+                temp2 = table[j][3]
+                table[j+1][3] = temp2
+                table[j][3] = temp
+                j += 1
+            else:
+                j += 1
+        iterations += 1
+    return table[n-1]
 
 
-def get_age_by(surname, table):
-    pass
+def get_age_by(surname, table, current_year):
+    record = []
+    record1 = []
+    surname_s = ''.join(surname)
+    for line in table:
+        if surname_s in line:
+            record = line[3]
+            age = record[0:4]
+            age1 = int(''.join(current_year))
+            age2 = age1 - int(age)
+            record1.append(str(age2))
+        else:
+            pass
+    return record1
 
 
 def get_email_by(surname, table):

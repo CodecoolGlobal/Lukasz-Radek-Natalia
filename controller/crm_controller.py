@@ -8,10 +8,12 @@ def run():
                "Add record",
                "Update record",
                "Remove record",
-               'Find by ID/name/e-mail']
+               'Find by ID/name/e-mail',
+               'Get youngest customer(finalnie 8)',
+               'Get age by..(finalnie 9)']
     
     file_list = "./model/crm/customers.csv"
-    list_labels = ['id: ', 'name (first name, last name): ', 'e-mail: ', 'birthdate (yyy-mm-dd): ', 'subscribed (0-no, 1-yes): ']
+    list_labels = ['id: ', 'name (first name, last name): ', 'e-mail: ', 'birthdate (yyyy-mm-dd): ', 'subscribed (0-no, 1-yes): ']
     remove = ['']
 
     choice = None
@@ -26,8 +28,13 @@ def run():
         elif choice == "4":
             crm.delete(data_manager.get_table_from_file(file_list), terminal_view.get_inputs(remove, 'Enter id, name or e-mail to remove: ', ''), file_list)
         elif choice == "5":
-            terminal_view.print_table(crm.read(data_manager.get_table_from_file(file_list), terminal_view.get_inputs(remove, 'Enter id, name or e-mail to remove: ', '')),'The record is')
+            terminal_view.print_table(crm.read(data_manager.get_table_from_file(file_list), terminal_view.get_inputs(remove, 'Enter id, name or e-mail to find: ', '')),'The record is')
+        elif choice == "8":
+            terminal_view.print_table(crm.get_youngest_customer(data_manager.get_table_from_file(file_list)), '')
+        elif choice == "9":
+            terminal_view.print_table(crm.get_age_by(terminal_view.get_inputs(remove, 'Enter id, name or e-mail to get age: ', ''), data_manager.get_table_from_file(file_list), terminal_view.get_inputs(remove, 'Enter the current year: ', '')), 'The age is: ')
         else:
             terminal_view.print_error_message("There is no such choice.")
 
-    
+
+
