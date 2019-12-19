@@ -7,8 +7,7 @@ def run():
     options = ["Print list",
                "Add record",
                "Update record",
-               "Remove record",
-               "Back"]
+               "Remove record",]
     
     file_list = "./model/hr/persons.csv"
     list_labels = ['id: ', 'name (first name, last name): ', 'e-mail: ', 'birthdate (yyyy-mm-dd): ', 'salary: ']

@@ -8,8 +8,7 @@ def run():
     options = ["Print list",
                "Add record",
                "Update record",
-               "Remove record",
-               "Back"]
+               "Remove record",]
     
     file_list = "./model/store/games.csv"
     list_labels = ['id: ', 'title: ', 'manufacturer: ', 'price: ', 'release_date (yyyy-mm-dd): ']

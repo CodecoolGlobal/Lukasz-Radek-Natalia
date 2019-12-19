@@ -7,8 +7,7 @@ def run():
     options = ["Print list",
                "Add record",
                "Update record",
-               "Remove record",
-               "Back"]
+               "Remove record",]
     
     file_list = "./model/crm/customers.csv"
     list_labels = ['id: ', 'name (first name, last name): ', 'e-mail: ', 'birthdate (yyy-mm-dd): ', 'subscribed (0-no, 1-yes): ']
