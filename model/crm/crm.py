@@ -63,8 +63,10 @@ def create(table, record, file_name):
         list: record
     """
 def read(table, idl):
+    record = []
+    id_s = ''.join(idl)
     for line in table:
-        if idl in line:
+        if id_s in line:
             record = line
         else:
             pass

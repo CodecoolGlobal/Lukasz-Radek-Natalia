@@ -61,13 +61,16 @@ def create(table, record, file_name):
     Returns:
         list: record
 """
-def read(table, id_):
+def read(table, idl):
+    record = []
+    id_s = ''.join(idl)
     for line in table:
-        if id_ in line:
+        if id_s in line:
             record = line
         else:
             pass
     return record
+
 
 
 
