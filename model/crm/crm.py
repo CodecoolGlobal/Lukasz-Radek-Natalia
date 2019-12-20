@@ -155,16 +155,16 @@ def get_subscribed_emails(table):
 
 
 def get_youngest_customer(table):
-    n = len(table)
+    n = (len(table))
     iterations = 1
     while iterations < n:
         j = 1
         while j <= n-2:
             if table[j][3] > table[j+1][3]:
-                temp = table[j+1][3]
-                temp2 = table[j][3]
-                table[j+1][3] = temp2
-                table[j][3] = temp
+                temp = table[j+1]
+                temp2 = table[j]
+                table[j+1] = temp2
+                table[j] = temp
                 j += 1
             else:
                 j += 1
