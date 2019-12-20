@@ -135,7 +135,13 @@ def get_longest_name_id(table):
                 the last by alphabetical order of the names)
         """
   
-    pass
+    for longest_name in range(len(table)-1,0,-1):
+        for i in range(longest_name):
+            if len(table[i][1]) > len(table[i+1][1]):
+                temp = table[i]
+                table[i] = table[i+1]
+                table[i+1] = temp
+    return table[i-1]
 
 
 # the question: Which customers has subscribed to the newsletter?
@@ -151,20 +157,28 @@ def get_subscribed_emails(table):
             list: list of strings (where a string is like "email;name")
         """
 
-    pass
+    for email in table:
+        subscribed = []
+        i = 1
+        j = 1
+        for i in table:
+            if i[4] == "1":
+                subscribed.append(i)
+                j += 1
+    return subscribed
 
 
 def get_youngest_customer(table):
-    n = len(table)
+    n = (len(table))
     iterations = 1
     while iterations < n:
         j = 1
         while j <= n-2:
             if table[j][3] > table[j+1][3]:
-                temp = table[j+1][3]
-                temp2 = table[j][3]
-                table[j+1][3] = temp2
-                table[j][3] = temp
+                temp = table[j+1]
+                temp2 = table[j]
+                table[j+1] = temp2
+                table[j] = temp
                 j += 1
             else:
                 j += 1
