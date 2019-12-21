@@ -29,11 +29,12 @@ def generate_random(table):
         for i in range(2):
             generated_list.append(random.choice(all_characters[0+a]))
     generated = ''.join(generated_list)
-    if generated_list in table:
-        generate_random(table)
-    else:
-        pass
-    return generated
+    for line in table:
+        if generated in line:
+            generate_random(table)
+        else:
+            pass
+        return generated
 
 
 """

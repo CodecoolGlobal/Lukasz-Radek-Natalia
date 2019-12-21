@@ -14,16 +14,16 @@ def print_table(table, title_list):
     elif len(table) == 5:
         print('|', table[0].ljust(8," "), '|', table[1].ljust(40," "), '|',
         table[2].ljust(38," "), '|', table[3].ljust(10," "), '|', table[4].ljust(12," "), '|' )
-        print('-'* 124)
+        print('-' * 124)
     elif len(table) == 1:
         print('|', table[0].ljust(8," "), '|')
         print('-'* 124)
     elif len(table) == 0:
         pass
-
+# else
 
 def print_result(result, label):
-    print('The respult of', label, 'is', result)
+    print('The result of', label, 'is', result)
   
 
 def print_menu(title, list_options, exit_message):
