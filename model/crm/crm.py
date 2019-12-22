@@ -175,7 +175,7 @@ def get_youngest_customer(table):
 def get_age_by(surname, table, current_year):
     record = []
     record1 = []
-    surname_s = ''.join(surname)
+    #surname_s = ''.join(surname)
     for line in table:
         if surname_s in line:
             record = line[3]
@@ -190,7 +190,7 @@ def get_age_by(surname, table, current_year):
 
 def get_email_by(surname, table):
     pass
-
+ 
 
 def get_first_name_by(surname, table):
     pass
