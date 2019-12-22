@@ -5,12 +5,12 @@ from model import data_manager
 
 def print_table(table, title_list):
     print(title_list)
-    print('-'* 124)
+    print('-'* 129)
     if len(table) > 5:
         for line in table:
             print('|', line[0].ljust(8," "), '|', line[1].ljust(40," "), '|',
-            line[2].ljust(38," "), '|', line[3].ljust(10," "), '|', line[4].ljust(12," "), '|' )
-            print('-'* 124)
+            line[2].ljust(38," "), '|', line[3].ljust(10," "), '|', line[4].ljust(16," "), '|' )
+            print('-'* 129)
     elif len(table) == 5:
         print('|', table[0].ljust(8," "), '|', table[1].ljust(40," "), '|',
         table[2].ljust(38," "), '|', table[3].ljust(10," "), '|', table[4].ljust(12," "), '|' )
