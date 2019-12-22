@@ -29,11 +29,12 @@ def generate_random(table):
         for i in range(2):
             generated_list.append(random.choice(all_characters[0+a]))
     generated = ''.join(generated_list)
-    if generated_list in table:
-        generate_random(table)
-    else:
-        pass
-    return generated
+    for line in table:
+        if generated in line:
+            generate_random(table)
+        else:
+            pass
+        return generated
 
 
 """
@@ -135,7 +136,13 @@ def get_longest_name_id(table):
                 the last by alphabetical order of the names)
         """
   
-    pass
+    for longest_name in range(len(table)-1,0,-1):
+        for i in range(longest_name):
+            if len(table[i][1]) > len(table[i+1][1]):
+                temp = table[i]
+                table[i] = table[i+1]
+                table[i+1] = temp
+    return table[i-1]
 
 
 # the question: Which customers has subscribed to the newsletter?
@@ -151,7 +158,15 @@ def get_subscribed_emails(table):
             list: list of strings (where a string is like "email;name")
         """
 
-    pass
+    for email in table:
+        subscribed = []
+        i = 1
+        j = 1
+        for i in table:
+            if i[4] == "1":
+                subscribed.append(i)
+                j += 1
+    return subscribed
 
 
 def get_youngest_customer(table):

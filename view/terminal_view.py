@@ -20,10 +20,10 @@ def print_table(table, title_list):
         print('—'* 124)
     elif len(table) == 0:
         pass
-
+# else
 
 def print_result(result, label):
-    print('The respult of', label, 'is', result)
+    print('The result of', label, 'is', result)
   
 
 def print_menu(title, list_options, exit_message):
