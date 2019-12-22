@@ -7,7 +7,7 @@ from model import data_manager
 sales_list = data_manager.get_table_from_file('sales/sales.csv')
 sales_file = 'sales/sales.csv'
 
-list_labels = ['id: ', 'Employee name: ', 'Customer name: ', 'Product ID: ', 'Number of items: ']
+list_labels = ['id: ', 'Employee ID: ', 'Customer ID: ', 'Product ID: ', 'Number of items: ']
 
 temp = [""]
     
