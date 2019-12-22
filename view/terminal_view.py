@@ -23,7 +23,13 @@ def print_table(table, title_list):
 # else
 
 def print_result(result, label):
-    print('The result of', label, 'is', result)
+    print(label)
+    print('-'* 124)
+    for line in result:
+        print('|', line[0].ljust(8," "), '|', line[1].ljust(40," "), '|',
+        line[2].ljust(38," "), '|', line[3].ljust(10," "), '|', line[4].ljust(12," "), '|' )
+        print('-'* 124)
+   # print('The result of', label, 'is', result)
   
 
 def print_menu(title, list_options, exit_message):
