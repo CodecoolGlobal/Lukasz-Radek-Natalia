@@ -8,16 +8,19 @@ from controller import crm_controller
 def run():
     options = ["Store manager",
                "Human resources manager",
-               "Customer Relationship Management (CRM)"]
+               "Customer Relationship Management (CRM)",
+               "Sales manager"]
 
     choice = None
     while choice != "0":
-        choice = terminal_view.get_choice(options)
+        choice = terminal_view.get_choice('Menu' , options)
         if choice == "1":
             store_controller.run()
         elif choice == "2":
             hr_controller.run()
         elif choice == "3":
             crm_controller.run()
+        elif choice == '4':
+            sales_controller.run()
         else:
             terminal_view.print_error_message("There is no such choice.")
