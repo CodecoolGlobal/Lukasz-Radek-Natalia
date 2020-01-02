@@ -153,7 +153,13 @@ def get_persons_closest_to_average_salary(table):
 
 
 def get_shortest_surname(table):
-    pass
+    for shortest_surname in range(len(table)-1,0,-1):
+        for i in range(shortest_surname):
+            if len(table[i][1].split(" ")[-1]) > len(table[i+1][1].split(" ")[-1]):
+                temp = table[i]
+                table[i] = table[i+1]
+                table[i+1] = temp
+    return table[i]
 
 
 def get_age_by(surname, table):
@@ -161,8 +167,31 @@ def get_age_by(surname, table):
 
 
 def get_email_by(surname, table):
-    pass
+    i = 0
+    result = []
+    email = []
+    surname_s = ''.join(surname) 
+    for line in table:
+        result.append(line[1])
+        mylist = [i.split(' ') for i in result]
+    for line1 in mylist:
+        i = i + 1
+        if surname_s in line1:
+            email.append(table[i-1][2])
+    return email
 
 
 def get_first_name_by(surname, table):
-    pass
+    i = 0
+    result = []
+    name = []
+    surname_s = ''.join(surname)
+    for line in table:
+        result.append(line[1])    
+        mylist = [i.split(' ') for i in result]
+    for line1 in mylist:
+        i = i + 1
+        if surname_s in line1:
+            name.append(table[i-1][1].split(' ')[0])
+            
+    return name
