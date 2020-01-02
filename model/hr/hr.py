@@ -124,6 +124,8 @@ def delete(table, id_, file_name):
 # special functions:
 # ------------------
 
+
+
 def get_oldest_person(table):
     """
     Question: Who is the oldest person?
@@ -135,7 +137,24 @@ def get_oldest_person(table):
         list: A list of strings (name or names if there are two more with the same value)
     """
 
-    pass
+
+    for oldest_person in range(len(table)-1,0,-1):         
+        for i in range(oldest_person):
+            if table[i][3][0:4] < table[i+1][3][0:4]:           # compares year
+                temp = table[i]
+                table[i] = table[i+1]
+                table[i+1] = temp
+            elif table[i][3][0:4] == table[i+1][3][0:4]:        # if year is the same
+                if table[i][3][5:7] < table[i+1][3][5:7]:       # compares month
+                    temp = table[i]
+                    table[i] = table[i+1]
+                    table[i+1] = temp
+                elif table[i][3][5:7] == table[i+1][3][5:7]:    # if month is the same
+                    if table[i][3][8:] < table[i+1][3][8:]:     # compares day
+                        temp = table[i]
+                        table[i] = table[i+1]
+                        table[i+1] = temp
+    return table[i-1]
 
 
 def get_persons_closest_to_average_salary(table):
@@ -162,21 +181,33 @@ def get_shortest_surname(table):
     return table[i]
 
 
-def get_age_by(surname, table):
-    pass
+def get_age_by(surname, table, current_year):
+    record = []
+    record1 = []
+    surname_s = ''.join(surname)
+    for line in table:
+        if surname_s in line:
+            record = line[3]
+            age = record[0:4]
+            age1 = int(''.join(current_year))
+            age2 = age1 - int(age)
+            record1.append(str(age2))
+        else:
+            pass
+    return record1
 
 
 def get_email_by(surname, table):
     i = 0
     result = []
     email = []
-    surname_s = ''.join(surname) 
+    surname_s = ''.join(surname)  # the get_inputs function always returns a list, this option may be useful
     for line in table:
         result.append(line[1])
         mylist = [i.split(' ') for i in result]
     for line1 in mylist:
         i = i + 1
-        if surname_s in line1:
+        if surname_s in line1:  
             email.append(table[i-1][2])
     return email
 
@@ -184,14 +215,13 @@ def get_email_by(surname, table):
 def get_first_name_by(surname, table):
     i = 0
     result = []
-    name = []
-    surname_s = ''.join(surname)
+    first_name = []
+    surname = ''.join(surname) 
     for line in table:
-        result.append(line[1])    
+        result.append(line[1])
         mylist = [i.split(' ') for i in result]
     for line1 in mylist:
         i = i + 1
-        if surname_s in line1:
-            name.append(table[i-1][1].split(' ')[0])
-            
-    return name
+        if surname in line1:
+            first_name.append(table[i-1][1].split(" ")[0])
+    return first_name
