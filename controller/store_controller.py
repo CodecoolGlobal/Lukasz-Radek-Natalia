@@ -9,7 +9,12 @@ def run():
                "Add record",
                "Update record",
                "Remove record",
-               'Find by ID/name/e-mail']
+               "Get counts",
+               "Get averege by manufacturer",
+               "Get oldest game",
+               "Get chepest game",
+               "Get age by", 
+               "Get game by"]
     
     file_list = "./model/store/games.csv"
     list_labels = ['id: ', 'title: ', 'manufacturer: ', 'price: ', 'release_date (yyyy-mm-dd): ']
@@ -28,5 +33,13 @@ def run():
             store.delete(data_manager.get_table_from_file(file_list), terminal_view.get_inputs(remove, 'Enter id, name or e-mail to remove: ', ''), file_list)
         elif choice == "5":
             terminal_view.print_table(store.read(data_manager.get_table_from_file(file_list), terminal_view.get_inputs(remove, 'Enter id, name or e-mail to remove: ', '')),'The record is')
+        elif choice == "6":
+           terminal_view.print_table(store.get_average_by_manufacturer(data_manager.get_table_from_file(file_list), terminal_view.get_inputs(remove, 'Enter the game title', '')), 'Average by manufacturer: ')
+        elif choice == "7":
+            terminal_view.print_table(store.get_oldest_game(data_manager.get_table_from_file(file_list)), 'Get the oldest game')
+        elif choice == "8":
+            terminal_view.print_table(store.get_cheapest_game(data_manager.get_table_from_file(file_list)), 'Get the the cheapest game')
+        elif choice == "9":
+            terminal_view.print_table(store.get_age_by(terminal_view.get_inputs(remove, 'Enter the game title', ''), data_manager.get_table_from_file(file_list), terminal_view.get_inputs(remove, 'Enter the current year: ', '')), 'The age is: ')
         else:
             terminal_view.print_error_message("There is no such choice.")

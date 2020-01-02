@@ -16,14 +16,19 @@ def print_table(table, title_list):
         table[2].ljust(38," "), '|', table[3].ljust(10," "), '|', table[4].ljust(12," "), '|' )
         print('—'* 124)
     elif len(table) == 1:
-        print('|', table[0].ljust(8," "), '|')
+        print('|', table[0], '|')
         print('—'* 124)
     elif len(table) == 0:
         pass
 # else
 
 def print_result(result, label):
-    print('The result of', label, 'is', result)
+    print(label)
+    print('—'* 124)
+    print('|', result[0].ljust(8," "), '|', result[1].ljust(40," "), '|',
+    result[2].ljust(38," "), '|', result[3].ljust(10," "), '|', result[4].ljust(12," "), '|' )
+    print('—'* 124)
+   # print('The result of', label, 'is', result)
   
 
 def print_menu(title, list_options, exit_message):

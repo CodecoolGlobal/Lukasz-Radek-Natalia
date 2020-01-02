@@ -13,11 +13,7 @@ def run():
 
     choice = None
     while choice != "0":
-<<<<<<< HEAD
         choice = terminal_view.get_choice('Main menu', options)
-=======
-        choice = terminal_view.get_choice('Menu' , options)
->>>>>>> 3a8af6ca92f3e1e305b7d4a2b060cccd1a278483
         if choice == "1":
             store_controller.run()
         elif choice == "2":
