@@ -125,45 +125,99 @@ def delete(table, id_, file_name):
 # ------------------
 
 def get_counts_by_manufacturers(table):
-    """
-    Question: How many different games are available of each manufacturer?
-
-    Args:
-        table (list): data table to work on
-
-    Returns:
-         dict: A dictionary with this structure: { [manufacturer] : [count] }
-    """
-
-    pass
+    manufacturer = {}
+    company_name = []
+    result = []
+    for line in table:
+        manufacturer.update({line[2]: 0})
+        company_name.append(line[2])  
+    for line in company_name:
+        manufacturer[line] = manufacturer[line] + 1
+    for key, value in manufacturer.items():
+        temp = [key+':'+str(value)]
+        result.append(temp)
+    return result
 
 
 def get_average_by_manufacturer(table, manufacturer):
-    """
-    Question: What is the average price of games in stock of a given manufacturer?
-
-    Args:
-        table (list): data table to work on
-        manufacturer (str): Name of manufacturer
-
-    Returns:
-         number
-    """
-
-    pass
-
+    record1 = 0
+    i = 0
+    average = ['This is no such game in the stock']
+    manufacturer_s = ''.join(manufacturer)
+    for line in table:
+        if manufacturer_s in line:
+            record1 = int(record1) + int(line[3])
+            i = i + 1
+            average.clear()
+            a = record1/i           
+            average.append(str(a))
+    return average
+   
 
 def get_oldest_game(table):
-    pass
+    n = (len(table))
+    iterations = 1
+    while iterations < n:
+        j = 1
+        while j <= n-2:
+            if table[j][4] < table[j+1][4]:
+                temp = table[j+1]
+                temp2 = table[j]
+                table[j+1] = temp2
+                table[j] = temp
+                j += 1
+            else:
+                j += 1
+        iterations += 1
+        result = table[n-1]
+    return result
 
 
 def get_cheapest_game(table):
-    pass
+    n = (len(table))
+    iterations = 1
+    while iterations < n:
+        j = 1
+        while j <= n-2:
+            if table[j][3] < table[j+1][3]:
+                temp = table[j+1]
+                temp2 = table[j]
+                table[j+1] = temp2
+                table[j] = temp
+                j += 1
+            else:
+                j += 1
+        iterations += 1
+        result = table[n-1]
+    return result
 
 
-def get_age_by(title, table):
-    pass
+def get_age_by(surname, table, current_year):
+    record = []
+    record1 = ['This is no such game in the stock']
+    surname_s = ''.join(surname)
+    for line in table:
+        if surname_s in line:
+            record = line[4]
+            age = record[0:4]
+            age1 = int(''.join(current_year))
+            age2 = age1 - int(age)
+            record1.clear()
+            record1.append(str(age2))
+    return record1
 
 
 def get_game_by(keyword, table):
-    pass
+    i = 0
+    a = 0
+    result = []
+    name = []
+    keywords_s = ''.join(keyword)
+    for line in table:
+        result.append(line[1])
+        mylist = [i.split(' ') for i in result]
+    for line1 in mylist:
+        i = i + 1
+        if keywords_s in line1:
+            name.append(table[i-1])
+    return name

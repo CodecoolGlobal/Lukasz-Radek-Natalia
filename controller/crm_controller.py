@@ -12,7 +12,9 @@ def run():
                "What is the id of the customer with the longest name?",
                "Which customers have subscribed to the newsletter?",
                'Get youngest customer',
-               'Get age by..']
+               'Get age by..',
+               'Get email by..',
+               'Get first name by..']
     
     file_list = "./model/crm/customers.csv"
     list_labels = ['id: ', 'name (first name, last name): ', 'e-mail: ', 'birthdate (yyyy-mm-dd): ', 'subscribed (0-no, 1-yes): ']
@@ -39,6 +41,10 @@ def run():
             terminal_view.print_table(crm.get_youngest_customer(data_manager.get_table_from_file(file_list)), '')
         elif choice == "9":
             terminal_view.print_table(crm.get_age_by(terminal_view.get_inputs(remove, 'Enter id, name or e-mail to get age: ', ''), data_manager.get_table_from_file(file_list), terminal_view.get_inputs(remove, 'Enter the current year: ', '')), 'The age is: ')
+        elif choice == "10":
+            terminal_view.print_table(crm.get_email_by(terminal_view.get_inputs(remove, 'Enter surname to get email: ', ''), data_manager.get_table_from_file(file_list)), 'The email is: ')
+        elif choice == "11":
+            terminal_view.print_table(crm.get_first_name_by(terminal_view.get_inputs(remove, 'Enter surname to get first name: ', ''), data_manager.get_table_from_file(file_list)), 'The first name is: ')
         else:
             terminal_view.print_error_message("There is no such choice.")
 

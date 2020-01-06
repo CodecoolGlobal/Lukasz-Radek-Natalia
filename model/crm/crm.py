@@ -189,23 +189,46 @@ def get_youngest_customer(table):
 
 def get_age_by(surname, table, current_year):
     record = []
-    record1 = []
-    #surname_s = ''.join(surname)
+    record1 = ['This is no such game in the stock']
+    surname_s = ''.join(surname)
     for line in table:
         if surname_s in line:
             record = line[3]
             age = record[0:4]
             age1 = int(''.join(current_year))
             age2 = age1 - int(age)
+            record1.clear()
             record1.append(str(age2))
-        else:
-            pass
     return record1
 
 
 def get_email_by(surname, table):
-    pass
- 
+    i = 0
+    result = []
+    email = []
+    surname_s = ''.join(surname) 
+    for line in table:
+        result.append(line[1])
+        mylist = [i.split(' ') for i in result]
+    for line1 in mylist:
+        i = i + 1
+        if surname_s in line1:
+            email.append(table[i-1][2])
+    return email
+
+
 
 def get_first_name_by(surname, table):
-    pass
+    i = 0
+    result = []
+    name = []
+    surname_s = ''.join(surname)
+    for line in table:
+        result.append(line[1])    
+        mylist = [i.split(' ') for i in result]
+    for line1 in mylist:
+        i = i + 1
+        if surname_s in line1:
+            name.append(table[i-1][1].split(' ')[0])
+            
+    return name
